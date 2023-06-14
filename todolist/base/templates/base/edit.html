@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %} {% block content %}
+
+<h1>EDIT YOUR TASK</h1>
+<form method="post" action="/update/{{id}}/">
+    {% csrf_token %}
+    <div class="tittle">
+
+        <h1>Tittle</h1>
+        <input type="text" name="newtittle" id="newid" value="{{tittle}}">
+
+    </div>
+
+    <div class="discrip">
+
+        <h1>Description</h1>
+        <textarea name="newdescription" id="newid" cols="30" rows="10" name="description">{{description}}</textarea>
+
+    </div>
+
+    <div class="save">
+        <button submit ">Save Changes</button>
+    </div>
+</form>
+
+{% endblock  %}

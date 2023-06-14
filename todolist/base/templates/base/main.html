@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %} {% block content %}
+<h1>----TASKS---- </h1>
+<a href="/create/">Add Task</a>
+<table>
+    <tr>
+        <th>ITEMS</th>
+        <th></th>
+    </tr>
+    {% for task in all_items %}
+    <tr>
+        <td>{{task.tittle}}</td>
+        <td><a href="/task/{{task.id}}/">view</a></td>
+        <td><a href="/delete/{{task.id}}/">Delete</a></td>
+        <td><a href="/edit/{{task.id}}/">Edit</a></td>
+    </tr>
+    {% empty %}
+    <h3>no data in the list</h3>
+    {% endfor %}
+</table>
+{% endblock %}

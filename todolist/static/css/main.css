@@ -1,0 +1,47 @@
+.container {
+    background-color: rgb(242, 66, 7);
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container h1 {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.tittle,
+.discrip {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding-top: 3rem;
+}
+
+.tittle h1 {
+    padding-right: 2rem;
+}
+
+.discrip h1 {
+    padding-right: 2rem;
+}
+
+.save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+}
+
+.save button {
+    width: 3rem;
+    width: 7rem;
+}
+
+.link a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: aliceblue;
+}
