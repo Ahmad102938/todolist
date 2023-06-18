@@ -1,11 +1,40 @@
 {% extends 'base/base.html' %} {% block content %}
 
-<h1>{{tittle}}</h1>
-
-<h1>{{description}}</h1>
-
-<h1>{{create}}</h1>
-
-<h1>{{status}}</h1>
+<div class="container mt-5">
+    <h2 class="text-center alert alert-info">Preview of {{tittle}}</h2>
+    <div class="container justify-content-center">
+        <form action="">
+            <div class=" container p-3 mb-4 border border-success rounded">
+                <h1>Tittle:
+                    <label for="">{{tittle}}</label>
+                </h1>
+            </div>
+            <div class=" container p-3 mb-4 border border-info rounded">
+                <h1>Description:
+                    <p style="font-size: 2rem; font-weight: 400; ">{{description}}</p>
+                </h1>
+            </div>
+            <div class="container p-3 mb-4 border border-success rounded">
+                <h1>Created On:
+                    <p style="font-size:2.5rem; font-weight:450;">{{create}}</p>
+                </h1>
+            </div>
+            <div class="container p-3 mb-4 border border-info rounded">
+                <h1>
+                    Is Complited:
+                    <label style="font-size:2.5rem; font-weight:400;">{{status}}</label>
+                </h1>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="px-3 py-2 bg-primary border rounded">
+                    <a href="" style="color: #fff; text-decoration:none;">Edit</a>
+                </div>
+                <div class="px-3 py-2 mx-2 bg-success border rounded">
+                    <a href="{% url 'hometasks' %}" style="color: #fff; text-decoration:none;">Go Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

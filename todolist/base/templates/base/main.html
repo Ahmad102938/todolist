@@ -1,20 +1,60 @@
 {% extends 'base/base.html' %} {% block content %}
-<h1>----TASKS---- </h1>
-<a href="/create/">Add Task</a>
-<table>
-    <tr>
-        <th>ITEMS</th>
-        <th></th>
-    </tr>
-    {% for task in all_items %}
-    <tr>
-        <td>{{task.tittle}}</td>
-        <td><a href="/task/{{task.id}}/">view</a></td>
-        <td><a href="/delete/{{task.id}}/">Delete</a></td>
-        <td><a href="/edit/{{task.id}}/">Edit</a></td>
-    </tr>
-    {% empty %}
-    <h3>no data in the list</h3>
-    {% endfor %}
-</table>
+<div class="container mt-5">
+    {% if request.user.is_authenticated %}
+    <h2 class="text-center alert alert-danger">Hello {{request.user}} You Have X Incomplete Task</h2>
+
+    <div class="row">
+        <div class="col-sm-4 mb-4">
+            <h4 class="text-center alert alert-info">Add New Task</h4>
+            <form action="{% url 'savetask' %}" method="POST">
+                {% csrf_token %}
+                <h5>Tittle: <input type="text" name="tittle" id="" class="form-control"></h5>
+                <h5>Description: <textarea class="form-control mb-3" name="description" id="" cols="30" rows="10"></textarea>
+                    <h5>Status <input type="radio" name="complete" id="" value="True">True <br> <input type="radio" name="complete" id="" value="False">False</h5>
+                    <input type="submit" value="Add" class="btn btn-success">
+            </form>
+        </div>
+        <div class="col-sm-8">
+            <h4 class="text-center alert alert-info">Your Added Task</h4>
+            {% if all_items %} {% else %} {% endif %}
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Complete</th>
+                        <th scope="col">Task</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">UpDate</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                {% for task in all_items %}
+                <tbody>
+                    <tr>
+                        <!-- {% if task.complete.is_False %}
+                        <th scope="row"><i class="fa-solid fa-right-long"></i></th>
+                        {% else %}
+                        <th scope="row"><i class="fa-solid fa-check"></i></i>
+                        </th>
+                        {% endif %} -->
+                        <th scope="row">{{task.complete}}</th>
+                        <td>{{task.tittle}}</td>
+                        <td>{{task.create}}</td>
+                        <td>{{task.create}}</td>
+                        <td>
+                            <a href="/task/{{task.id}}/" class="btn btn-success btn-sm mb-1"><i class="fa-solid fa-eye"></i></a>
+                            <a href="/edit/{{task.id}}/" class="btn btn-primary btn-sm mb-1"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                            <a href="/delete/{{task.id}}/" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                {% empty %}
+                <h5 class="text-center alert alert-danger">Nothing To Do! </h5>
+                <h6 class="text-center alert alert-warning">Add Your Task</h6>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock %}
